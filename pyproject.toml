@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "keysigil"
-version = "0.1.1"
+version = "0.1.2"
 description = "Embeddable API key management SDK with LLM token budget tracking. Drop-in library for key lifecycle, rate limiting, and token budgets."
 readme = "README.md"
 license = { text = "MIT" }
@@ -52,6 +52,12 @@ dev = [
     "uvicorn>=0.30.0",
     "httpx>=0.27.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/4ahul/keysigil"
+Repository = "https://github.com/4ahul/keysigil"
+Issues = "https://github.com/4ahul/keysigil/issues"
+Changelog = "https://github.com/4ahul/keysigil/releases"
 
 [project.scripts]
 keysigil = "keysigil.cli.main:app"
