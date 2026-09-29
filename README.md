@@ -1,4 +1,4 @@
-# KeyForge
+# KeySigil
 
 Embeddable API key management SDK with LLM token budget tracking.
 
