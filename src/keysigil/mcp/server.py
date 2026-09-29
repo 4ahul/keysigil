@@ -8,9 +8,9 @@ from mcp.server import Server
 from mcp.server.stdio import stdio_server
 from mcp.types import TextContent, Tool
 
-from keyforge.core.engine import KeyForge
+from keysigil.core.engine import KeyForge
 
-server = Server("keyforge")
+server = Server("keysigil")
 
 _TOOLS: list[Tool] = [
     Tool(

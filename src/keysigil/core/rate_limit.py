@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from keyforge.storage.base import StorageBackend
+    from keysigil.storage.base import StorageBackend
 
 
 class SlidingWindowLimiter:

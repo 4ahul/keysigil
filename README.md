@@ -3,7 +3,7 @@
 Embeddable API key management SDK with LLM token budget tracking.
 
 ```python
-from keyforge import KeyForge
+from keysigil import KeyForge
 
 kf = KeyForge("sqlite:///keys.db")
 await kf.setup()
@@ -28,33 +28,33 @@ await kf.track_usage(result.key.id, input_tokens=500, output_tokens=200, model="
 ## Install
 
 ```bash
-pip install keyforge                    # core (SQLite)
-pip install 'keyforge[cli]'             # + CLI
-pip install 'keyforge[all]'             # everything
+pip install keysigil                    # core (SQLite)
+pip install 'keysigil[cli]'             # + CLI
+pip install 'keysigil[all]'             # everything
 ```
 
 ## CLI
 
 ```bash
-keyforge init
-keyforge create --name "my-key" --rate-requests 100 --monthly-tokens 500000
-keyforge verify kf_live_xxx
-keyforge list
-keyforge usage key_xxx
-keyforge rotate key_xxx
-keyforge revoke key_xxx
+keysigil init
+keysigil create --name "my-key" --rate-requests 100 --monthly-tokens 500000
+keysigil verify kf_live_xxx
+keysigil list
+keysigil usage key_xxx
+keysigil rotate key_xxx
+keysigil revoke key_xxx
 ```
 
 ## Storage backends
 
 - **SQLite** (default) — dev / single-server
-- **PostgreSQL** — `pip install 'keyforge[postgres]'`, use `postgresql://...` URL
-- **Redis** — `pip install 'keyforge[redis]'`, for rate limiting
+- **PostgreSQL** — `pip install 'keysigil[postgres]'`, use `postgresql://...` URL
+- **Redis** — `pip install 'keysigil[redis]'`, for rate limiting
 
 ## FastAPI middleware
 
 ```python
-from keyforge.middleware.fastapi import KeyForgeAuth
+from keysigil.middleware.fastapi import KeyForgeAuth
 
 auth = KeyForgeAuth(kf, require_permissions=["models.invoke"])
 
@@ -66,7 +66,7 @@ async def chat(request: Request):
 ## MCP server (LLM agents)
 
 ```bash
-keyforge serve
+keysigil serve
 ```
 
 Tools: `create_api_key`, `verify_api_key`, `list_api_keys`, `revoke_api_key`, `track_token_usage`, `get_usage_stats`

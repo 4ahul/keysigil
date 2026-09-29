@@ -3,14 +3,14 @@ from __future__ import annotations
 """Redis-backed rate counter — use as a mixin or standalone for rate limiting only.
 
 Combine with SQLiteStorage or PostgresStorage for full storage:
-    storage = SQLiteStorage("keyforge.db")
+    storage = SQLiteStorage("keysigil.db")
     limiter = SlidingWindowLimiter(RedisRateLimitStorage(redis_url))
 """
 
 from datetime import datetime
 from typing import Any
 
-from keyforge.models.budget import UsageRecord
+from keysigil.models.budget import UsageRecord
 
 
 class RedisRateLimitStorage:

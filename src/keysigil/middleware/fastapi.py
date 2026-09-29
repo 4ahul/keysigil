@@ -6,7 +6,7 @@ from fastapi import HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 if TYPE_CHECKING:
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
 _bearer = HTTPBearer(auto_error=False)
 

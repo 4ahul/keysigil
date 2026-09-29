@@ -4,20 +4,20 @@ import asyncio
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from keyforge.core.budgets import TokenBudgetTracker
-from keyforge.core.keys import extract_prefix, generate_key, hash_key, new_key_id
-from keyforge.core.rate_limit import SlidingWindowLimiter
-from keyforge.models.budget import TokenBudget, UsageRecord, UsageStats
-from keyforge.models.config import KeyForgeConfig
-from keyforge.models.key import APIKey, KeyCreateResult, RateLimitConfig, VerifyResult
-from keyforge.storage.base import StorageBackend
+from keysigil.core.budgets import TokenBudgetTracker
+from keysigil.core.keys import extract_prefix, generate_key, hash_key, new_key_id
+from keysigil.core.rate_limit import SlidingWindowLimiter
+from keysigil.models.budget import TokenBudget, UsageRecord, UsageStats
+from keysigil.models.config import KeyForgeConfig
+from keysigil.models.key import APIKey, KeyCreateResult, RateLimitConfig, VerifyResult
+from keysigil.storage.base import StorageBackend
 
 
 def _make_storage(db_url: str) -> StorageBackend:
     if db_url.startswith("postgresql") or db_url.startswith("postgres"):
-        from keyforge.storage.postgres import PostgresStorage
+        from keysigil.storage.postgres import PostgresStorage
         return PostgresStorage(db_url)
-    from keyforge.storage.sqlite import SQLiteStorage
+    from keysigil.storage.sqlite import SQLiteStorage
     path = db_url.replace("sqlite:///", "").replace("sqlite://", "")
     return SQLiteStorage(path)
 
@@ -36,7 +36,7 @@ class KeyForge:
 
     def _ensure_setup(self) -> None:
         if not self._setup_done:
-            raise RuntimeError("Call await kf.setup() or use `keyforge init` first.")
+            raise RuntimeError("Call await kf.setup() or use `keysigil init` first.")
 
     async def create_key(
         self,

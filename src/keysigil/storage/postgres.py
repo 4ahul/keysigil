@@ -4,11 +4,11 @@ import json
 from datetime import datetime, timezone
 from typing import Any
 
-from keyforge.models.budget import UsageRecord
+from keysigil.models.budget import UsageRecord
 
 
 class PostgresStorage:
-    """PostgreSQL backend — requires asyncpg: pip install 'keyforge[postgres]'"""
+    """PostgreSQL backend — requires asyncpg: pip install 'keysigil[postgres]'"""
 
     def __init__(self, db_url: str) -> None:
         self._url = db_url

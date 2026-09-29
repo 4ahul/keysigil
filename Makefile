@@ -11,24 +11,24 @@ test:
 
 lint:
 	ruff check src/ tests/ examples/
-	mypy src/keyforge/
+	mypy src/keysigil/
 
 selftest: example
 	@echo "==> Init DB"
-	keyforge init --db keyforge.db
+	keysigil init --db keyforge.db
 	@echo "==> Create key"
-	KEY=$$(keyforge create --name "selftest" --db keyforge.db --prefix kf_test | grep "kf_test" | tr -d ' '); \
+	KEY=$$(keysigil create --name "selftest" --db keyforge.db --prefix kf_test | grep "kf_test" | tr -d ' '); \
 	echo "Key: $$KEY"; \
 	echo "==> Verify key"; \
-	keyforge verify "$$KEY" --db keyforge.db; \
+	keysigil verify "$$KEY" --db keyforge.db; \
 	echo "==> List keys"; \
-	keyforge list --db keyforge.db
+	keysigil list --db keyforge.db
 
 example:
 	@echo "Start example: uvicorn examples.fastapi_app.main:app --port 8000"
 
 serve:
-	keyforge serve
+	keysigil serve
 
 clean:
 	rm -rf dist/ build/ *.egg-info/ .pytest_cache/ htmlcov/ .coverage

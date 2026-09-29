@@ -4,12 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "keysigil"
-version = "0.1.0"
+version = "0.1.1"
 description = "Embeddable API key management SDK with LLM token budget tracking. Drop-in library for key lifecycle, rate limiting, and token budgets."
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-authors = [{ name = "keyforge contributors" }]
+authors = [{ name = "keysigil contributors" }]
 keywords = ["api-keys", "authentication", "rate-limiting", "llm", "token-budget", "api-key-management", "sdk", "keysigil"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -54,10 +54,10 @@ dev = [
 ]
 
 [project.scripts]
-keyforge = "keyforge.cli.main:app"
+keysigil = "keysigil.cli.main:app"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/keyforge"]
+packages = ["src/keysigil"]
 
 [tool.ruff]
 target-version = "py310"

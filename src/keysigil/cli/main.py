@@ -7,10 +7,10 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from keyforge import __version__
+from keysigil import __version__
 
 app = typer.Typer(
-    name="keyforge",
+    name="keysigil",
     help="[bold green]KeyForge[/bold green] — API key management with LLM token budgets.",
     rich_markup_mode="rich",
     no_args_is_help=True,
@@ -23,7 +23,7 @@ _DB_OPTION = typer.Option("sqlite:///keyforge.db", "--db", help="Database URL")
 
 def _version_callback(value: bool) -> None:
     if value:
-        console.print(f"keyforge {__version__}")
+        console.print(f"keysigil {__version__}")
         raise typer.Exit()
 
 
@@ -37,14 +37,14 @@ def main(
 
 
 def _get_kf(db: str) -> object:
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
     return KeyForge(db)
 
 
 @app.command()
 def init(db: str = _DB_OPTION) -> None:
     """Initialize the database (create tables)."""
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
     kf = KeyForge(db)
     asyncio.run(kf.setup())
     console.print(f"[green]✓[/green] Database ready: {db}")
@@ -63,7 +63,7 @@ def create(
 ) -> None:
     """Create a new API key. [bold red]Plaintext shown once — save it.[/bold red]"""
     from datetime import timedelta
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
     kf = KeyForge(db)
 
@@ -96,7 +96,7 @@ def verify(
     db: str = _DB_OPTION,
 ) -> None:
     """Verify an API key and show its status."""
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
     kf = KeyForge(db)
 
@@ -124,7 +124,7 @@ def list_keys(
     db: str = _DB_OPTION,
 ) -> None:
     """List all API keys."""
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
     kf = KeyForge(db)
 
@@ -160,7 +160,7 @@ def revoke(
     db: str = _DB_OPTION,
 ) -> None:
     """Revoke an API key immediately."""
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
     if not typer.confirm(f"Revoke {key_id}? This cannot be undone."):
         raise typer.Abort()
@@ -183,7 +183,7 @@ def rotate(
 ) -> None:
     """Rotate a key. Old key stays valid during grace period."""
     from datetime import timedelta
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
     kf = KeyForge(db)
 
@@ -204,7 +204,7 @@ def usage(
     db: str = _DB_OPTION,
 ) -> None:
     """Show token usage stats for a key."""
-    from keyforge.core.engine import KeyForge
+    from keysigil.core.engine import KeyForge
 
     kf = KeyForge(db)
 
@@ -228,8 +228,8 @@ def usage(
 def serve(host: str = typer.Option("localhost", "--host"), port: int = typer.Option(8080, "--port")) -> None:
     """Start the MCP server for LLM agent integration."""
     try:
-        from keyforge.mcp.server import run
+        from keysigil.mcp.server import run
         run(host=host, port=port)
     except ImportError:
-        console.print("[red]MCP not installed.[/red] Run: pip install 'keyforge[mcp]'")
+        console.print("[red]MCP not installed.[/red] Run: pip install 'keysigil[mcp]'")
         raise typer.Exit(1)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import pytest
 from datetime import timedelta
 
-from keyforge import KeyForge, VerifyResult
+from keysigil import KeyForge, VerifyResult
 
 
 @pytest.fixture
@@ -105,7 +105,7 @@ async def test_list_keys(kf):
 
 
 async def test_key_format():
-    from keyforge.core.keys import generate_key, hash_key, validate_format, extract_prefix
+    from keysigil.core.keys import generate_key, hash_key, validate_format, extract_prefix
     key = generate_key("kf_live")
     assert key.startswith("kf_live_")
     assert validate_format(key)

@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Protocol, runtime_checkable
 
-from keyforge.models.budget import UsageRecord
+from keysigil.models.budget import UsageRecord
 
 
 @runtime_checkable

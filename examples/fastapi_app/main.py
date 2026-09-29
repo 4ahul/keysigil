@@ -2,9 +2,9 @@
 KeyForge demo — FastAPI app with API key auth and LLM token tracking.
 
 Run:
-    pip install 'keyforge[all]' uvicorn
-    keyforge init
-    keyforge create --name "demo-key" --rate-requests 10 --rate-window 1m --monthly-tokens 100000
+    pip install 'keysigil[all]' uvicorn
+    keysigil init
+    keysigil create --name "demo-key" --rate-requests 10 --rate-window 1m --monthly-tokens 100000
     uvicorn examples.fastapi_app.main:app --reload
 
 Then test:
@@ -20,8 +20,8 @@ from typing import AsyncGenerator
 from fastapi import Depends, FastAPI, HTTPException, Request
 from pydantic import BaseModel
 
-from keyforge import KeyForge
-from keyforge.middleware.fastapi import KeyForgeAuth
+from keysigil import KeyForge
+from keysigil.middleware.fastapi import KeyForgeAuth
 
 kf = KeyForge("sqlite:///keyforge.db")
 auth = KeyForgeAuth(kf)

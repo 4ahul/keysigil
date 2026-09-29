@@ -6,7 +6,7 @@ from typing import Any
 
 import aiosqlite
 
-from keyforge.models.budget import UsageRecord
+from keysigil.models.budget import UsageRecord
 
 
 class SQLiteStorage:

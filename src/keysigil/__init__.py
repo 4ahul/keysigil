@@ -1,7 +1,7 @@
 __version__ = "0.1.0"
 
-from keyforge.core.engine import KeyForge
-from keyforge.models import (
+from keysigil.core.engine import KeyForge
+from keysigil.models import (
     APIKey,
     KeyCreateResult,
     KeyStatus,

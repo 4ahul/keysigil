@@ -4,8 +4,8 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from keyforge.models.budget import TokenBudget, UsageRecord, UsageStats
-    from keyforge.storage.base import StorageBackend
+    from keysigil.models.budget import TokenBudget, UsageRecord, UsageStats
+    from keysigil.storage.base import StorageBackend
 
 
 class TokenBudgetTracker:
@@ -51,7 +51,7 @@ class TokenBudgetTracker:
         await self._storage.record_usage(record)
 
     async def get_stats(self, key_id: str) -> UsageStats:
-        from keyforge.models.budget import UsageStats
+        from keysigil.models.budget import UsageStats
 
         now = datetime.now(timezone.utc)
         raw = await self._storage.get_usage_stats(key_id, now)
