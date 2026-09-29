@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual envs
+.venv/
+venv/
+.env
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Distribution
+*.tar.gz
+*.whl
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# App-specific
+~/.keyforge/
+keyforge.db
+*.keyforge.db
+
+# Logs
+*.log
